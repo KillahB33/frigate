@@ -112,7 +112,7 @@ ffmpeg:
 
 ### `objects`
 
-Can be overridden at the camera level
+Can be overridden at the camera level. For a list of available objects, see the [objects documentation](./objects.mdx).
 
 ```yaml
 objects:
