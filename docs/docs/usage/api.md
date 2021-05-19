@@ -55,7 +55,7 @@ Example parameters:
 
 ### `GET /api/stats`
 
-Contains some granular debug info that can be used for sensors in HomeAssistant.
+Contains some granular debug info that can be used for sensors in Home Assistant.
 
 Sample response:
 
@@ -176,7 +176,7 @@ Events from the database. Accepts the following query string parameters:
 
 ### `GET /api/events/summary`
 
-Returns summary data for events in the database. Used by the HomeAssistant integration.
+Returns summary data for events in the database. Used by the Home Assistant integration.
 
 ### `GET /api/events/<id>`
 
