@@ -392,11 +392,24 @@ RUN \
         make -j $(nproc) install && \
         rm -rf ${DIR}
 
+## jetson-ffmpeg https://github.com/jocover/jetson-ffmpeg.git
+RUN  \
+        DIR=/tmp/jetson && mkdir -p ${DIR} && cd ${DIR} && \
+        git clone https://github.com/jocover/jetson-ffmpeg.git && \
+        cd jetson-ffmpeg && \
+        mkdir build && cd  build && \
+        cmake .. && \
+        make && \
+        make install && \
+        ldconfig && \
+
 ## ffmpeg https://ffmpeg.org/
 RUN  \
         DIR=/tmp/ffmpeg && mkdir -p ${DIR} && cd ${DIR} && \
         curl -sLO https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.bz2 && \
-        tar -jx --strip-components=1 -f ffmpeg-${FFMPEG_VERSION}.tar.bz2
+        tar -jx --strip-components=1 -f ffmpeg-${FFMPEG_VERSION}.tar.bz2 && \
+        wget https://github.com/jocover/jetson-ffmpeg/raw/master/ffmpeg_nvmpi.patch && \
+        git apply ffmpeg_nvmpi.patch
 
 RUN \
         DIR=/tmp/ffmpeg && mkdir -p ${DIR} && cd ${DIR} && \
@@ -438,6 +451,7 @@ RUN \
         # --enable-omx-rpi \
         # --enable-mmal \
         --enable-v4l2_m2m \
+        --enable-nvmpi \
         --enable-neon \
         --extra-cflags="-I${PREFIX}/include" \
         --extra-ldflags="-L${PREFIX}/lib" && \
