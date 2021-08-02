@@ -121,4 +121,4 @@ lxc.cap.drop:
 
 ### ESX
 
-For details on running Frigate under ESX, see details [here](https://github.com/blakeblackshear/frigate/issues/305).
+For details on running Frigate under ESX using coral usb, see details [here](https://github.com/blakeblackshear/frigate/issues/305).
